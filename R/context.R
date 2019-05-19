@@ -11,27 +11,37 @@
 #' @examples 
 #' context()
 
-context <- 
-  function(term = '.*', 
-           target = NULL, 
-           back = 20, 
-           forward = 20, 
-           ignore.case = TRUE, 
-           highlight = TRUE){
-    
-    if(!is.null(target)){
+context <-
+  function (term = ".*",
+            target = NULL,
+            back = 20,
+            forward = 20,
+            ignore.case = TRUE,
+            highlight = TRUE)
+  {
+    if (!is.null(target)) {
       matches <- target[grepl(term, target, ignore.case = ignore.case)]
-      cPos <- unlist(gregexpr(pattern = term, matches))
-      str <- substr(matches, 
-                    start = ifelse(cPos - back < 1, 1, cPos - back), 
-                    stop = ifelse(cPos + forward > length(matches), 
-                                  length(matches), cPos + forward))
-      
-      if(highlight == TRUE){
-        str <- gsub(paste0('(',term,')'), '\\U\\1', str, perl = TRUE)  
+      cPos <-
+        gregexpr(pattern = term, matches, ignore.case = ignore.case)
+      cPos <- unlist(lapply(cPos, `[[`, 1))
+      str <- substr(
+        matches,
+        start = ifelse(cPos - back < 1,
+                       1, cPos - back),
+        stop = ifelse(
+          cPos + nchar(term) + forward > nchar(matches),
+          nchar(matches),
+          cPos + nchar(term) + forward
+        )
+      )
+      if (highlight == TRUE) {
+        str <- gsub(paste0("(", term, ")"),
+                    "\\U\\1",
+                    str,
+                    perl = TRUE,
+                    ignore.case = ignore.case)
       }
-      
-      str <- paste0('...', str, '...')
+      str <- paste0("...", str, "...")
     }
     return(str)
-}
+  }
