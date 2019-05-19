@@ -1,0 +1,27 @@
+Package: convenience
+Type: Package
+Title: Convenience Functions for R
+Version: 0.0.0.9000
+Author: Sean Murphy
+Maintainer: The package maintainer <smurphy1@gmail.com>
+Description: A collection of R functions that improve the convenience of conducting analyses in R.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports:
+    data.table,
+    lubridate,
+    DT,
+    qdapTools,
+    tidytext,
+    knitr,
+    striprtf
+Depends:
+    data.table,
+    lubridate,
+    DT,
+    qdapTools,
+    tidytext,
+    striprtf,
+    knitr
