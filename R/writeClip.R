@@ -24,6 +24,7 @@ writeClip <-
            quote = TRUE,
            kable = FALSE,
            format = 'markdown',
+           size = 2^20,
            ...) {
 
     if (kable) {
@@ -37,7 +38,7 @@ writeClip <-
       if (!is.null(dim(x))) {
         write.table(
           x,
-          "clipboard",
+          file = paste0("clipboard-", size),
           sep = sep,
           quote = quote,
           row.names = row.names,
@@ -47,7 +48,7 @@ writeClip <-
       } else {
         write.table(
           t(x),
-          "clipboard",
+          file = paste0("clipboard-", size),
           sep = sep,
           quote = quote,
           row.names = FALSE,
