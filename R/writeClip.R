@@ -24,7 +24,7 @@ writeClip <-
            quote = TRUE,
            kable = FALSE,
            format = 'markdown',
-           size = 2^20,
+           size = 2^10,
            ...) {
 
     if (kable) {
