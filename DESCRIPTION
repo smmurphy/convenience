@@ -1,7 +1,7 @@
 Package: convenience
 Type: Package
 Title: Convenience Functions for R
-Version: 0.0.0.9000
+Version: 0.0.1.0
 Author: Sean Murphy
 Maintainer: The package maintainer <smurphy1@gmail.com>
 Description: A collection of R functions that improve the convenience of conducting analyses in R.
