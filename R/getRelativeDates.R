@@ -10,13 +10,13 @@
 #' @examples 
 #' getRelativeDates()
 
-getRelativeDates <- function(targetDate = 
-                               as.character(
-                                 as.Date(
-                                   format(
-                                     Sys.time(), '%Y-%m-%d')))){
+getRelativeDates <- function(targetDate = Sys.time(), tz = 'America/New_York'){
   
   # Make sure target date is a character for consistency
+  targetDate <- as.character(
+    as.Date(
+      format(
+        Sys.time(), '%Y-%m-%d', tz= tz)))
   targetDate <- as.character(targetDate)
   
   # Get today's date
